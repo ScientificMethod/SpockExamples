@@ -15,7 +15,8 @@ trait TestFileParser {
 	}
 	
 	/**
-	 * Surprise! You can define these methods in a trait
+	 * Surprise! You can define spec setup/cleanup methods in a trait.
+	 * Sadly, you cannot place a Spock test inside a trait.
 	 */
 	def cleanupSpec() {
 		// Ensure all written files were deleted
