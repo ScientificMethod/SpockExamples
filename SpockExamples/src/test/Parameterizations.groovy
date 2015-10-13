@@ -38,7 +38,7 @@ class Parameterizations extends Specification {
 		expect: 'the input to be even'
 			oneElementOfList % 2 == 0 
 		where:
-			oneElementOfList << 2, 4, 6, 8]
+			oneElementOfList << [2, 4, 6, 8]
 	}
 	
 	@Unroll("Is #oneElementOfList even?")
