@@ -58,4 +58,38 @@ class Parameterizations extends Specification {
 			two = 2
 			myList << [3, 5, 7, 9]
 	}
+	
+	def "Data can be passed in a table format"(Integer input, Integer output){
+		expect: 'the input to be odd'
+			input - 0 = output
+			
+		where: 'my input matches my output'
+			input	| output
+			1	| 1
+			2	| 2
+			3 	| 3
+	}
+	
+	@Unroll("#iteration.name") // Changes the name of the test result, and gives
+	// each iteration its own result (instead of displaying this test all at once)
+	def "Passing a list of maps is useful for some tests"(Map iteration){
+		// Tests I use this for:
+		// When my parameters are too long or plentiful for the table's horizontal format to work well
+		// When my parameters make it difficult for the table to line up
+		// When I want optional parameters
+		expect: 'the input to be odd'
+			iteration.input - iteration.subtr ?: 0 = output
+			
+		where: 'my input matches my output'
+			iteration << [
+			[name:"This is the name of my first test",
+			input:1,
+			output:1],
+			
+			[name:"This is what I will call my second test",
+			input:2,
+			subtr:1,
+			output:1],
+			]
+	}
 }
