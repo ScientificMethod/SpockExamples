@@ -70,13 +70,16 @@ class Parameterizations extends Specification {
 			3 	| 3
 	}
 	
-	@Unroll("#iteration.name") // Changes the name of the test result, and gives
-	// each iteration its own result (instead of displaying this test all at once)
+	/**
+	 * Times I use this where approach:
+	 *  When my parameters are too long or plentiful for the table's horizontal format to work well
+	 *  When my parameters make it difficult for the table to line up
+	 *  When I want optional parameters
+	 * 
+	 *  Side note: @Unroll is talked about under the wiki's annotations section.
+	 **/
+	@Unroll("#iteration.name") 
 	def "Passing a list of maps is useful for some tests"(Map iteration){
-		// Tests I use this for:
-		// When my parameters are too long or plentiful for the table's horizontal format to work well
-		// When my parameters make it difficult for the table to line up
-		// When I want optional parameters
 		expect: 'the input to be odd'
 			iteration.input - iteration.subtr ?: 0 = output
 			
